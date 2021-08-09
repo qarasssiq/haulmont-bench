@@ -6,6 +6,7 @@
 
 package com.company.myproject.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.security.entity.User;
 
@@ -14,6 +15,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "MYPROJECT_PRODUCER")
 @Entity(name = "myproject_Producer")
+@NamePattern("%s|producerName")
 public class Producer extends StandardEntity {
     private static final long serialVersionUID = -4443756371495698389L;
 

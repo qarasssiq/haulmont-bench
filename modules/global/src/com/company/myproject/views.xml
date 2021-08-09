@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2021 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
+    <view entity="myproject_Producer" name="producer-view" extends="_local">
+        <property name="producerUser" view="_minimal"/>
+    </view>
+    <view entity="myproject_Product" name="product-view" extends="_local">
+        <property name="productProducer" view="_minimal">
+            <property name="producerName"/>
+        </property>
+    </view>
+    <view entity="myproject_Store" name="store-view" extends="_local">
+        <property name="storeRetailer" view="_minimal">
+            <property name="retailerName"/>
+        </property>
+    </view>
+    <view entity="myproject_Retailer" name="retailer-view" extends="_local"/>
 </views>

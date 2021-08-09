@@ -6,6 +6,7 @@
 
 package com.company.myproject.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.Column;
@@ -15,6 +16,7 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "MYPROJECT_RETAILER")
 @Entity(name = "myproject_Retailer")
+@NamePattern("%s|retailerName")
 public class Retailer extends StandardEntity {
     private static final long serialVersionUID = 9221683264528665105L;
 

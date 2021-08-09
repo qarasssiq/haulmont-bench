@@ -1,5 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2021 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-myproject" insertBefore="administration" caption="mainMsg://menu_config.application-myproject">
+        <menu id="retailer_management" caption="Retailer management">
+            <item screen="myproject_Retailer.browse" caption="mainMsg://menu_config.myproject_Retailer.browse"/>
+            <separator/>
+            <item screen="myproject_Store.browse" caption="mainMsg://menu_config.myproject_Store.browse"/>
+        </menu>
+        <menu id="producer_management" caption="Producer management">
+            <item screen="myproject_Producer.browse" caption="mainMsg://menu_config.myproject_Producer.browse"/>
+            <separator/>
+            <item screen="myproject_Product.browse" caption="mainMsg://menu_config.myproject_Product.browse"/>
+        </menu>
     </menu>
 </menu-config>

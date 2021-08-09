@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2021 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://storeEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.myproject.web.screens.store">
+    <data>
+        <instance id="storeDc"
+                  class="com.company.myproject.entity.Store"
+                  view="store-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true">
+        <tabSheet>
+            <tab id="tab" caption="Tab">
+                <form id="form" dataContainer="storeDc">
+                    <column width="350px">
+                        <textField id="storeNumField" property="storeNum"/>
+                        <textField id="storeNameField" property="storeName"/>
+                        <pickerField id="storeRetailerField" property="storeRetailer">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                    </column>
+                </form>
+                <hbox id="editActions" spacing="true">
+                    <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+                    <button id="closeBtn" action="windowClose"/>
+                </hbox>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

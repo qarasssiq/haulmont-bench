@@ -6,6 +6,7 @@
 
 package com.company.myproject.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 
 @Table(name = "MYPROJECT_PRODUCT")
 @Entity(name = "myproject_Product")
+@NamePattern("%s|productName")
 public class Product extends StandardEntity {
     private static final long serialVersionUID = 1517050633050893209L;
 
