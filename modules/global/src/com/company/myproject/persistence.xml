@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2021 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
     <persistence-unit name="myproject" transaction-type="RESOURCE_LOCAL">
 
+        <class>com.company.myproject.entity.Retailer</class>
+        <class>com.company.myproject.entity.Store</class>
+        <class>com.company.myproject.entity.Producer</class>
+        <class>com.company.myproject.entity.Product</class>
     </persistence-unit>
 </persistence>
