@@ -20,24 +20,24 @@ public class Retailer extends StandardEntity {
 
     @NotNull
     @Column(name = "RETAILER_NAME", nullable = false, unique = true)
-    private String retailer_name;
+    private String retailerName;
 
     @Column(name = "RETAILER_FULL_NAME")
-    private String retailer_full_name;
+    private String retailerFullName;
 
-    public String getRetailer_full_name() {
-        return retailer_full_name;
+    public String getRetailerFullName() {
+        return retailerFullName;
     }
 
-    public void setRetailer_full_name(String retailer_full_name) {
-        this.retailer_full_name = retailer_full_name;
+    public void setRetailerFullName(String retailerFullName) {
+        this.retailerFullName = retailerFullName;
     }
 
-    public String getRetailer_name() {
-        return retailer_name;
+    public String getRetailerName() {
+        return retailerName;
     }
 
-    public void setRetailer_name(String retailer_name) {
-        this.retailer_name = retailer_name;
+    public void setRetailerName(String retailerName) {
+        this.retailerName = retailerName;
     }
 }

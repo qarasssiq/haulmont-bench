@@ -19,38 +19,38 @@ public class Product extends StandardEntity {
 
     @NotNull
     @Column(name = "PRODUCT_NAME", nullable = false, unique = true)
-    private String product_name;
+    private String productName;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "PRODUCT_PRODUCER_ID")
-    private Producer product_producer;
+    private Producer productProducer;
 
     @NotNull
     @Column(name = "PRODUCT_PRICE", nullable = false)
-    private BigDecimal product_price;
+    private BigDecimal productPrice;
 
-    public BigDecimal getProduct_price() {
-        return product_price;
+    public BigDecimal getProductPrice() {
+        return productPrice;
     }
 
-    public void setProduct_price(BigDecimal product_price) {
-        this.product_price = product_price;
+    public void setProductPrice(BigDecimal productPrice) {
+        this.productPrice = productPrice;
     }
 
-    public Producer getProduct_producer() {
-        return product_producer;
+    public Producer getProductProducer() {
+        return productProducer;
     }
 
-    public void setProduct_producer(Producer product_producer) {
-        this.product_producer = product_producer;
+    public void setProductProducer(Producer productProducer) {
+        this.productProducer = productProducer;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

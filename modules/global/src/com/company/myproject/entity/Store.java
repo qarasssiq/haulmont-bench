@@ -6,6 +6,7 @@
 
 package com.company.myproject.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
 import javax.persistence.*;
@@ -13,43 +14,44 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "MYPROJECT_STORE")
 @Entity(name = "myproject_Store")
+@NamePattern("%s %s|storeNum,storeName")
 public class Store extends StandardEntity {
     private static final long serialVersionUID = -4059720126704569118L;
 
     @NotNull
     @Column(name = "STORE_NUM", nullable = false, unique = true)
-    private String store_num;
+    private String storeNum;
 
     @NotNull
     @Column(name = "STORE_NAME", nullable = false)
-    private String store_name;
+    private String storeName;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "STORE_RETAILER_ID")
-    private Retailer store_retailer;
+    private Retailer storeRetailer;
 
-    public Retailer getStore_retailer() {
-        return store_retailer;
+    public Retailer getStoreRetailer() {
+        return storeRetailer;
     }
 
-    public void setStore_retailer(Retailer store_retailer) {
-        this.store_retailer = store_retailer;
+    public void setStoreRetailer(Retailer storeRetailer) {
+        this.storeRetailer = storeRetailer;
     }
 
-    public String getStore_name() {
-        return store_name;
+    public String getStoreName() {
+        return storeName;
     }
 
-    public void setStore_name(String store_name) {
-        this.store_name = store_name;
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
     }
 
-    public String getStore_num() {
-        return store_num;
+    public String getStoreNum() {
+        return storeNum;
     }
 
-    public void setStore_num(String store_num) {
-        this.store_num = store_num;
+    public void setStoreNum(String storeNum) {
+        this.storeNum = storeNum;
     }
 }

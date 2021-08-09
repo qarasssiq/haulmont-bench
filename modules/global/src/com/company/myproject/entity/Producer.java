@@ -19,36 +19,36 @@ public class Producer extends StandardEntity {
 
     @NotNull
     @Column(name = "PRODUCER_NAME", nullable = false, unique = true)
-    private String producer_name;
+    private String producerName;
 
     @Column(name = "PRODUCER_FULL_NAME")
-    private String producer_full_name;
+    private String producerFullName;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PRODUCER_USER_ID")
-    private User producer_user;
+    private User producerUser;
 
-    public User getProducer_user() {
-        return producer_user;
+    public User getProducerUser() {
+        return producerUser;
     }
 
-    public void setProducer_user(User producer_user) {
-        this.producer_user = producer_user;
+    public void setProducerUser(User producerUser) {
+        this.producerUser = producerUser;
     }
 
-    public String getProducer_full_name() {
-        return producer_full_name;
+    public String getProducerFullName() {
+        return producerFullName;
     }
 
-    public void setProducer_full_name(String producer_full_name) {
-        this.producer_full_name = producer_full_name;
+    public void setProducerFullName(String producerFullName) {
+        this.producerFullName = producerFullName;
     }
 
-    public String getProducer_name() {
-        return producer_name;
+    public String getProducerName() {
+        return producerName;
     }
 
-    public void setProducer_name(String producer_name) {
-        this.producer_name = producer_name;
+    public void setProducerName(String producerName) {
+        this.producerName = producerName;
     }
 }
