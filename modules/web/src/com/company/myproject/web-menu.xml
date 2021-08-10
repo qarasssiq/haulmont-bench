@@ -17,5 +17,6 @@
             <separator/>
             <item screen="myproject_Product.browse" caption="mainMsg://menu_config.myproject_Product.browse"/>
         </menu>
+        <item screen="myproject_StoreProduct.browse" caption="mainMsg://menu_config.myproject_StoreProduct.browse"/>
     </menu>
 </menu-config>

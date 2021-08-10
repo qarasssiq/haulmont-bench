@@ -39,9 +39,9 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="storeNum"/>
-                <column id="storeName"/>
-                <column id="storeRetailer"/>
+                <column id="num"/>
+                <column id="name"/>
+                <column id="retailer"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

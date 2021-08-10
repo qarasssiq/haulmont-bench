@@ -8,17 +8,21 @@
 <views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
 
     <view entity="myproject_Producer" name="producer-view" extends="_local">
-        <property name="producerUser" view="_minimal"/>
+        <property name="user" view="_minimal"/>
     </view>
     <view entity="myproject_Product" name="product-view" extends="_local">
-        <property name="productProducer" view="_minimal">
-            <property name="producerName"/>
+        <property name="producer" view="_minimal">
+            <property name="name"/>
         </property>
     </view>
     <view entity="myproject_Store" name="store-view" extends="_local">
-        <property name="storeRetailer" view="_minimal">
-            <property name="retailerName"/>
+        <property name="retailer" view="_minimal">
+            <property name="name"/>
         </property>
     </view>
     <view entity="myproject_Retailer" name="retailer-view" extends="_local"/>
+    <view entity="myproject_StoreProduct" name="storeProduct-view" extends="_local">
+        <property name="product" view="_minimal"/>
+        <property name="store" view="_minimal"/>
+    </view>
 </views>

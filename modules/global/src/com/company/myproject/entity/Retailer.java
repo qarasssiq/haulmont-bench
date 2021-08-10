@@ -16,30 +16,30 @@ import javax.validation.constraints.NotNull;
 
 @Table(name = "MYPROJECT_RETAILER")
 @Entity(name = "myproject_Retailer")
-@NamePattern("%s|retailerName")
+@NamePattern("%s|name")
 public class Retailer extends StandardEntity {
     private static final long serialVersionUID = 9221683264528665105L;
 
     @NotNull
-    @Column(name = "RETAILER_NAME", nullable = false, unique = true)
-    private String retailerName;
+    @Column(name = "NAME", nullable = false, unique = true)
+    private String name;
 
-    @Column(name = "RETAILER_FULL_NAME")
-    private String retailerFullName;
+    @Column(name = "FULL_NAME")
+    private String fullName;
 
-    public String getRetailerFullName() {
-        return retailerFullName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setRetailerFullName(String retailerFullName) {
-        this.retailerFullName = retailerFullName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getRetailerName() {
-        return retailerName;
+    public String getName() {
+        return name;
     }
 
-    public void setRetailerName(String retailerName) {
-        this.retailerName = retailerName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

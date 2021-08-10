@@ -8,6 +8,8 @@ package com.company.myproject.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,44 +17,45 @@ import java.math.BigDecimal;
 
 @Table(name = "MYPROJECT_PRODUCT")
 @Entity(name = "myproject_Product")
-@NamePattern("%s|productName")
+@NamePattern("%s|name")
 public class Product extends StandardEntity {
     private static final long serialVersionUID = 1517050633050893209L;
 
     @NotNull
-    @Column(name = "PRODUCT_NAME", nullable = false, unique = true)
-    private String productName;
+    @Column(name = "NAME", nullable = false, unique = true)
+    private String name;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PRODUCT_PRODUCER_ID")
-    private Producer productProducer;
+    @JoinColumn(name = "PRODUCER_ID")
+    @OnDeleteInverse(DeletePolicy.CASCADE)
+    private Producer producer;
 
     @NotNull
-    @Column(name = "PRODUCT_PRICE", nullable = false)
-    private BigDecimal productPrice;
+    @Column(name = "PRICE", nullable = false)
+    private BigDecimal price;
 
-    public BigDecimal getProductPrice() {
-        return productPrice;
+    public BigDecimal getPrice() {
+        return price;
     }
 
-    public void setProductPrice(BigDecimal productPrice) {
-        this.productPrice = productPrice;
+    public void setPrice(BigDecimal price) {
+        this.price = price;
     }
 
-    public Producer getProductProducer() {
-        return productProducer;
+    public Producer getProducer() {
+        return producer;
     }
 
-    public void setProductProducer(Producer productProducer) {
-        this.productProducer = productProducer;
+    public void setProducer(Producer producer) {
+        this.producer = producer;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getName() {
+        return name;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

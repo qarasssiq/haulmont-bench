@@ -1,0 +1,1 @@
+create unique index IDX_MYPROJECT_RETAILER_UK_NAME on MYPROJECT_RETAILER (NAME) where DELETE_TS is null ;

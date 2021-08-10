@@ -9,9 +9,13 @@ create table MYPROJECT_PRODUCER (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    PRODUCER_NAME varchar(255) not null,
-    PRODUCER_FULL_NAME varchar(255),
-    PRODUCER_USER_ID uuid,
+    CITY varchar(255),
+    STREET varchar(255),
+    HOUSE varchar(255),
+    --
+    NAME varchar(255) not null,
+    FULL_NAME varchar(255),
+    USER_ID uuid,
     --
     primary key (ID)
 )^
@@ -27,9 +31,9 @@ create table MYPROJECT_PRODUCT (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    PRODUCT_NAME varchar(255) not null,
-    PRODUCT_PRODUCER_ID uuid not null,
-    PRODUCT_PRICE decimal(19, 2) not null,
+    NAME varchar(255) not null,
+    PRODUCER_ID uuid not null,
+    PRICE decimal(19, 2) not null,
     --
     primary key (ID)
 )^
@@ -45,9 +49,14 @@ create table MYPROJECT_STORE (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    STORE_NUM varchar(255) not null,
-    STORE_NAME varchar(255) not null,
-    STORE_RETAILER_ID uuid not null,
+    CITY varchar(255),
+    STREET varchar(255),
+    HOUSE varchar(255),
+    --
+    NUM varchar(255) not null,
+    NAME varchar(255) not null,
+    RETAILER_ID uuid not null,
+    TYPE varchar(50),
     --
     primary key (ID)
 )^
@@ -63,9 +72,81 @@ create table MYPROJECT_RETAILER (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    RETAILER_NAME varchar(255) not null,
-    RETAILER_FULL_NAME varchar(255),
+    NAME varchar(255) not null,
+    FULL_NAME varchar(255),
     --
     primary key (ID)
 )^
 -- end MYPROJECT_RETAILER
+-- begin MYPROJECT_ORDER_PRODUCT
+create table MYPROJECT_ORDER_PRODUCT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PRODUCT_ID uuid not null,
+    AMOUNT integer not null,
+    ORDER_ID uuid,
+    --
+    primary key (ID)
+)^
+-- end MYPROJECT_ORDER_PRODUCT
+-- begin MYPROJECT_ORDER
+create table MYPROJECT_ORDER (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    STORE_ID uuid not null,
+    --
+    primary key (ID)
+)^
+-- end MYPROJECT_ORDER
+-- begin MYPROJECT_STORE_PRODUCT
+create table MYPROJECT_STORE_PRODUCT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PRODUCT_ID uuid not null,
+    PRICE decimal(19, 2) not null,
+    AMOUNT integer not null,
+    STORE_ID uuid not null,
+    --
+    primary key (ID)
+)^
+-- end MYPROJECT_STORE_PRODUCT
+-- begin MYPROJECT_PRICE_HISTORY
+create table MYPROJECT_PRICE_HISTORY (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PRODUCT_ID uuid not null,
+    STORE_ID uuid not null,
+    PRICE decimal(19, 2) not null,
+    DATE date not null,
+    --
+    primary key (ID)
+)^
+-- end MYPROJECT_PRICE_HISTORY
