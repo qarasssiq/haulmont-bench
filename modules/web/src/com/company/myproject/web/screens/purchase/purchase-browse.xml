@@ -7,49 +7,47 @@
 
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
-        caption="msg://storeBrowse.caption"
-        focusComponent="storesTable"
-        messagesPack="com.company.myproject.web.screens.store">
+        caption="msg://purchaseBrowse.caption"
+        focusComponent="purchasesTable"
+        messagesPack="com.company.myproject.web.screens.purchase">
     <data readOnly="true">
-        <collection id="storesDc"
-                    class="com.company.myproject.entity.Store"
-                    view="store-view">
-            <loader id="storesDl">
+        <collection id="purchasesDc"
+                    class="com.company.myproject.entity.Purchase"
+                    view="purchase-view">
+            <loader id="purchasesDl">
                 <query>
-                    <![CDATA[select e from myproject_Store e]]>
+                    <![CDATA[select e from myproject_Purchase e]]>
                 </query>
             </loader>
         </collection>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="storesTable"
+    <layout expand="purchasesTable"
             spacing="true">
         <filter id="filter"
-                applyTo="storesTable"
-                dataLoader="storesDl">
+                applyTo="purchasesTable"
+                dataLoader="purchasesDl">
             <properties include=".*"/>
         </filter>
-        <groupTable id="storesTable"
+        <groupTable id="purchasesTable"
                     width="100%"
-                    dataContainer="storesDc">
+                    dataContainer="purchasesDc">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="number" caption="Number"/>
-                <column id="name" caption="Name"/>
-                <column id="retailer" caption="Retailer"/>
-                <column id="address" caption="Address"/>
+                <column id="store"/>
+                <column id="purchaseProducts"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"
                           alwaysVisible="true">
-                <button id="createBtn" action="storesTable.create"/>
-                <button id="editBtn" action="storesTable.edit"/>
-                <button id="removeBtn" action="storesTable.remove"/>
+                <button id="createBtn" action="purchasesTable.create"/>
+                <button id="editBtn" action="purchasesTable.edit"/>
+                <button id="removeBtn" action="purchasesTable.remove"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">

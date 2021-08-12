@@ -14,29 +14,62 @@
                   class="com.company.myproject.entity.Store"
                   view="store-view">
             <loader/>
+            <collection id="storeProductDc" property="storeProducts"/>
         </instance>
     </data>
     <dialogMode height="600"
                 width="800"/>
     <layout spacing="true">
         <tabSheet>
-            <tab id="tab" caption="Tab">
+            <tab id="tab" caption="Main tab" spacing="true">
                 <form id="form" dataContainer="storeDc">
                     <column width="350px">
-                        <textField id="storeNumField" property="num"/>
-                        <textField id="storeNameField" property="name"/>
-                        <pickerField id="storeRetailerField" property="retailer">
+                        <textField id="storeNumField" property="number" caption="Number"/>
+                        <textField id="storeNameField" property="name" caption="Name"/>
+                        <pickerField id="storeRetailerField" property="retailer" caption="Retailer">
                             <actions>
                                 <action id="lookup" type="picker_lookup"/>
                                 <action id="clear" type="picker_clear"/>
                             </actions>
                         </pickerField>
+                        <textField id="storeCityField" property="address.city" caption="City"/>
+                        <textField id="storeStreetField" property="address.street" caption="Street"/>
+                        <textField id="storehouseField" property="address.building" caption="Building"/>
                     </column>
                 </form>
                 <hbox id="editActions" spacing="true">
                     <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
                     <button id="closeBtn" action="windowClose"/>
                 </hbox>
+            </tab>
+            <tab id="tab_1" caption="Products" spacing="true">
+                <groupBox id="storeProductsBox" caption="Products">
+                    <table id="storeProductsTable" dataContainer="storeProductDc" width="100%" height="200px">
+                        <actions>
+                            <action id="create" type="create">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="edit" type="edit">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <buttonsPanel alwaysVisible="true">
+                            <button id="storeProductsTableCreateBtn" action="storeProductsTable.create"/>
+                            <button id="storeProductsTableEditBtn" action="storeProductsTable.edit"/>
+                            <button id="storeProductsTableRemoveBtn" action="storeProductsTable.remove"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="product" caption="Product"/>
+                            <column id="price" caption="Price"/>
+                            <column id="amount" caption="Amount"/>
+                        </columns>
+                    </table>
+                </groupBox>
             </tab>
         </tabSheet>
     </layout>

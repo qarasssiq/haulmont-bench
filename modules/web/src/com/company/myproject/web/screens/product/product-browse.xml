@@ -14,11 +14,7 @@
         <collection id="productsDc"
                     class="com.company.myproject.entity.Product"
                     view="product-view">
-            <loader id="productsDl">
-                <query>
-                    <![CDATA[select e from myproject_Product e]]>
-                </query>
-            </loader>
+            <loader id="productsDl"/>
         </collection>
     </data>
     <dialogMode height="600"
@@ -39,9 +35,9 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="name"/>
-                <column id="producer"/>
-                <column id="price"/>
+                <column id="name" caption="Name"/>
+                <column id="producer" caption="Producer"/>
+                <column id="price" caption="Producer's price"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

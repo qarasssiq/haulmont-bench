@@ -29,6 +29,7 @@ public class PriceHistory extends StandardEntity {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "STORE_ID")
+    @OnDeleteInverse(DeletePolicy.CASCADE)
     private Store store;
 
     @NotNull

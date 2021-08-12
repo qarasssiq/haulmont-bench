@@ -12,10 +12,10 @@
         <class>com.company.myproject.entity.Store</class>
         <class>com.company.myproject.entity.Producer</class>
         <class>com.company.myproject.entity.Product</class>
-        <class>com.company.myproject.entity.Order</class>
-        <class>com.company.myproject.entity.OrderProduct</class>
         <class>com.company.myproject.entity.Address</class>
         <class>com.company.myproject.entity.PriceHistory</class>
         <class>com.company.myproject.entity.StoreProduct</class>
+        <class>com.company.myproject.entity.Purchase</class>
+        <class>com.company.myproject.entity.PurchaseProduct</class>
     </persistence-unit>
 </persistence>

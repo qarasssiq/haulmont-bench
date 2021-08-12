@@ -17,12 +17,34 @@
     </view>
     <view entity="myproject_Store" name="store-view" extends="_local">
         <property name="retailer" view="_minimal">
-            <property name="name"/>
+        </property>
+        <property name="address" view="_minimal">
+        </property>
+        <property name="storeProducts" view="_minimal">
+            <property name="product" view="_minimal">
+                <property name="producer" view="_minimal"/>
+                <property name="price"/>
+            </property>
+            <property name="price"/>
+            <property name="amount"/>
         </property>
     </view>
     <view entity="myproject_Retailer" name="retailer-view" extends="_local"/>
     <view entity="myproject_StoreProduct" name="storeProduct-view" extends="_local">
-        <property name="product" view="_minimal"/>
+        <property name="product" view="_minimal">
+            <property name="price"/>
+        </property>
+    </view>
+    <view entity="myproject_Purchase" name="purchase-view" extends="_local">
         <property name="store" view="_minimal"/>
+        <property name="purchaseProducts" view="_minimal"/>
+    </view>
+    <view entity="myproject_PurchaseProduct" name="purchaseProduct-view" extends="_local">
+        <property name="product" view="_minimal">
+            <property name="producer" view="_minimal"/>
+        </property>
+        <property name="purchase" view="_minimal">
+            <property name="store" view="_minimal"/>
+        </property>
     </view>
 </views>

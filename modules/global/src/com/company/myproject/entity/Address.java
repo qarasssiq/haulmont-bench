@@ -7,6 +7,7 @@
 package com.company.myproject.entity;
 
 import com.haulmont.chile.core.annotations.MetaClass;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.EmbeddableEntity;
 
 import javax.persistence.Column;
@@ -14,6 +15,7 @@ import javax.persistence.Embeddable;
 
 @MetaClass(name = "myproject_Address")
 @Embeddable
+@NamePattern("%s, %s, %s|city,street,building")
 public class Address extends EmbeddableEntity {
     private static final long serialVersionUID = 1711860107067625010L;
 
@@ -23,15 +25,15 @@ public class Address extends EmbeddableEntity {
     @Column(name = "STREET")
     private String street;
 
-    @Column(name = "HOUSE")
-    private String house;
+    @Column(name = "BUILDING")
+    private String building;
 
-    public String getHouse() {
-        return house;
+    public String getBuilding() {
+        return building;
     }
 
-    public void setHouse(String house) {
-        this.house = house;
+    public void setBuilding(String building) {
+        this.building = building;
     }
 
     public String getStreet() {

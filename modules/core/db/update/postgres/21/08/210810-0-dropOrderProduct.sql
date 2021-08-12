@@ -1,0 +1,1 @@
+alter table myproject_order_product rename to MYPROJECT_ORDER_PRODUCT__U73505 ;

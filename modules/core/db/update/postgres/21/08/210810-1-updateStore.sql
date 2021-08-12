@@ -1,0 +1,1 @@
+drop index IDX_MYPROJECT_STORE_UK_NUM ;

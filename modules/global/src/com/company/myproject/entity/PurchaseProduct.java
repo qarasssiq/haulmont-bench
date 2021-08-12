@@ -6,39 +6,43 @@
 
 package com.company.myproject.entity;
 
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
-@Table(name = "MYPROJECT_ORDER_PRODUCT")
-@Entity(name = "myproject_OrderProduct")
-public class OrderProduct extends StandardEntity {
-    private static final long serialVersionUID = 2092390612944892038L;
+@Table(name = "MYPROJECT_PURCHASE_PRODUCT")
+@Entity(name = "myproject_PurchaseProduct")
+@NamePattern("%s (%s)|product,amount")
+public class PurchaseProduct extends StandardEntity {
+    private static final long serialVersionUID = 7415659311139598278L;
 
     @NotNull
+    @OnDeleteInverse(DeletePolicy.CASCADE)
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "PRODUCT_ID")
-    @OnDeleteInverse(DeletePolicy.CASCADE)
     private Product product;
 
     @NotNull
     @Column(name = "AMOUNT", nullable = false)
+    @Positive(message = "Amount of the product must be positive!")
     private Integer amount;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "ORDER_ID")
     @OnDeleteInverse(DeletePolicy.CASCADE)
-    private Order order;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PURCHASE_ID")
+    private Purchase purchase;
 
-    public Order getOrder() {
-        return order;
+    public Purchase getPurchase() {
+        return purchase;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
     }
 
     public Integer getAmount() {

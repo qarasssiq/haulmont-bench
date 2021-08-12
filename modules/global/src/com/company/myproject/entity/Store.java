@@ -20,18 +20,18 @@ import java.util.List;
 
 @Table(name = "MYPROJECT_STORE")
 @Entity(name = "myproject_Store")
-@NamePattern("%s %s|num,name")
+@NamePattern("%s, %s|number,name")
 public class Store extends StandardEntity {
     private static final long serialVersionUID = -4059720126704569118L;
 
     @NotNull
-    @Column(name = "NUM", nullable = false, unique = true)
-    private String num;
+    @Column(name = "NUMBER", nullable = false, unique = true)
+    private String number;
 
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "store")
-    private List<StoreProduct> products;
+    private List<StoreProduct> storeProducts;
 
     @NotNull
     @Column(name = "NAME", nullable = false)
@@ -58,12 +58,12 @@ public class Store extends StandardEntity {
         this.type = type == null ? null : type.getId();
     }
 
-    public List<StoreProduct> getProducts() {
-        return products;
+    public List<StoreProduct> getStoreProducts() {
+        return storeProducts;
     }
 
-    public void setProducts(List<StoreProduct> products) {
-        this.products = products;
+    public void setStoreProducts(List<StoreProduct> storeProducts) {
+        this.storeProducts = storeProducts;
     }
 
     public Address getAddress() {
@@ -90,11 +90,11 @@ public class Store extends StandardEntity {
         this.name = name;
     }
 
-    public String getNum() {
-        return num;
+    public String getNumber() {
+        return number;
     }
 
-    public void setNum(String num) {
-        this.num = num;
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

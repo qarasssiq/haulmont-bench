@@ -6,29 +6,30 @@
   -->
 
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        caption="msg://productEdit.caption"
+        caption="msg://storeProductEdit.caption"
         focusComponent="form"
-        messagesPack="com.company.myproject.web.screens.product">
+        messagesPack="com.company.myproject.web.screens.storeproduct">
     <data>
-        <instance id="productDc"
-                  class="com.company.myproject.entity.Product"
-                  view="product-view">
+        <instance id="storeProductDc"
+                  class="com.company.myproject.entity.StoreProduct"
+                  view="storeProduct-view">
             <loader/>
         </instance>
     </data>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="productDc">
+        <form id="form" dataContainer="storeProductDc">
             <column width="350px">
-                <textField id="productNameField" property="name" caption="Name"/>
-                <pickerField id="productProducerField" property="producer" caption="Producer">
+                <pickerField id="productField" property="product" caption="Product">
                     <actions>
                         <action id="lookup" type="picker_lookup"/>
                         <action id="clear" type="picker_clear"/>
                     </actions>
                 </pickerField>
-                <textField id="productPriceField" property="price" caption="Producer's price"/>
+                <textField id="priceField" property="price" caption="Price"/>
+                <label id="producerPriceLabel" value="Producer's price: "/>
+                <textField id="amountField" property="amount" caption="Amount"/>
             </column>
         </form>
         <hbox id="editActions" spacing="true">

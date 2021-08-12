@@ -45,9 +45,9 @@
                         <action id="remove" type="remove"/>
                     </actions>
                     <columns>
-                        <column id="name"/>
-                        <column id="fullName"/>
-                        <column id="user"/>
+                        <column id="name" caption="Name"/>
+                        <column id="fullName" caption="Full name"/>
+                        <column id="user" caption="User"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -66,9 +66,9 @@
                 <scrollBox id="fieldGroupBox">
                     <form id="form" dataContainer="producerDc">
                         <column width="350px">
-                            <textField id="producerNameField" property="name"/>
-                            <textField id="producerFullNameField" property="fullName"/>
-                            <pickerField id="producerUserField" property="user">
+                            <textField id="producerNameField" property="name" caption="Name"/>
+                            <textField id="producerFullNameField" property="fullName" caption="Full name"/>
+                            <pickerField id="producerUserField" property="user" caption="User">
                                 <actions>
                                     <action id="lookup" type="picker_lookup"/>
                                     <action id="clear" type="picker_clear"/>
