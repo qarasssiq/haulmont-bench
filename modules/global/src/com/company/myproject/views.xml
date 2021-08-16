@@ -47,4 +47,8 @@
             <property name="store" view="_minimal"/>
         </property>
     </view>
+    <view entity="myproject_ProductWhoseAmountIsLessThan" name="productWhoseAmountIsLessThan-view" extends="_local">
+        <property name="product" view="_minimal"/>
+        <property name="amount"/>
+    </view>
 </views>

@@ -18,5 +18,7 @@
             <item screen="myproject_Product.browse" caption="mainMsg://menu_config.myproject_Product.browse"/>
         </menu>
         <item screen="myproject_Purchase.browse" caption="mainMsg://menu_config.myproject_Purchase.browse"/>
+        <item screen="myproject_ProducerServiceScreen" caption="mainMsg://menu_config.myproject_ProducerServiceScreen"/>
+        <item screen="myproject_StoreServiceScreen" caption="mainMsg://menu_config.myproject_StoreServiceScreen"/>
     </menu>
 </menu-config>

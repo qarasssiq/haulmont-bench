@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2021 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://storeServiceScreen.caption"
+        messagesPack="com.company.myproject.web.screens.storeservice">
+    <layout>
+        <tabSheet>
+            <tab id="tab1" caption="msg://tab1.caption">
+                <form id="form1">
+                    <column width="350px">
+
+                        <pickerField id="storeField1" metaClass="myproject_Store"
+                                     caption="msg://storeField.caption" required="true"/>
+                        <button id="button1" caption="msg://button.caption"/>
+                        <label id="purchasesNumber1" value="msg://purchasesNumber.caption"/>
+                    </column>
+                </form>
+            </tab>
+            <tab id="tab2" caption="msg://tab2.caption">
+                <form>
+                    <column width="350px">
+                        <pickerField id="retailerField" metaClass="myproject_Retailer"
+                                     caption="msg://retailerField.caption" required="true"/>
+                        <button id="button2" caption="msg://button.caption"/>
+                        <label id="purchasesNumber2" value="msg://purchasesNumber.caption"/>
+                    </column>
+                </form>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>

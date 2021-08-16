@@ -6,8 +6,10 @@
 
 package com.company.myproject.web.screens.product;
 
+import com.company.myproject.entity.Producer;
 import com.company.myproject.entity.Store;
 import com.company.myproject.entity.StoreProduct;
+import com.company.myproject.web.ProducerOption;
 import com.company.myproject.web.StoreOption;
 import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.CollectionLoader;
@@ -33,15 +35,21 @@ public class ProductBrowse extends StandardLookup<Product> {
 
     @Subscribe
     public void onInit(InitEvent event) {
-        ScreenOptions storeOptions = event.getOptions();
-        if (storeOptions instanceof StoreOption) {
-            Store store = ((StoreOption) storeOptions).getStore();
+        ScreenOptions screenOptions = event.getOptions();
+        if (screenOptions instanceof StoreOption) {
+            Store store = ((StoreOption) screenOptions).getStore();
             List<StoreProduct> storeProductList = store.getStoreProducts();
-            for (StoreProduct storeProduct : storeProductList)
+            for (StoreProduct storeProduct : storeProductList) {
                 productList.add(storeProduct.getProduct().getId());
+            }
             productsDl.setQuery("select e from myproject_Product e where e.id IN :store_id");
             productsDl.setView("product-view");
             productsDl.setParameter("store_id", productList);
+        } else if (screenOptions instanceof ProducerOption) {
+            Producer producer = ((ProducerOption) screenOptions).getProducer();
+            productsDl.setQuery("select e from myproject_Product e where e.producer= :producer");
+            productsDl.setView("product-view");
+            productsDl.setParameter("producer", producer);
         } else {
             productsDl.setQuery("select e from myproject_Product e");
         }

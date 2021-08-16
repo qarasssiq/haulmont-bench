@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+  ~ Copyright (c) 2021 Haulmont Technology Ltd. All Rights Reserved.
+  ~ Haulmont Technology proprietary and confidential.
+  ~ Use is subject to license terms.
+  -->
+
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://producerServiceScreen.caption"
+        messagesPack="com.company.myproject.web.screens.producerservice">
+    <data>
+        <collection id="productWhoseAmountIsLessThanDc"
+                    class="com.company.myproject.entity.ProductWhoseAmountIsLessThan">
+            <view extends="productWhoseAmountIsLessThan-view"/>
+            <loader id="producerServiceDl">
+                <query>
+                    <![CDATA[select e from myproject_ProductWhoseAmountIsLessThan e]]>
+                </query>
+            </loader>
+        </collection>
+        <collection id="storeWithNoSuchProductsDc" class="com.company.myproject.entity.StoreWithNoSuchProduct">
+            <view extends="_local"/>
+            <loader id="storeWithNoSuchProductsDl">
+                <query>
+                    <![CDATA[select e from myproject_StoreWithNoSuchProduct e]]>
+                </query>
+            </loader>
+        </collection>
+
+    </data>
+    <layout spacing="true">
+        <tabSheet>
+            <tab id="tab1" caption="msg://tab1.caption">
+                <form id="form1">
+                    <column width="350px">
+                        <pickerField id="producerPickerField1" metaClass="myproject_Producer"
+                                     caption="msg://Producer.caption"
+                                     required="true"/>
+                        <pickerField id="storePickerField" metaClass="myproject_Store" caption="msg://Store.caption"
+                                     required="true"/>
+                        <textField id="amountTextField" caption="msg://Amount.caption" datatype="int" required="true"/>
+                        <button id="button1" align="TOP_RIGHT" caption="msg://Button1.caption"/>
+                        <table id="productWhoseAmountIsLessThanTable" dataContainer="productWhoseAmountIsLessThanDc">
+                            <columns>
+                                <column id="product"/>
+                                <column id="amount"/>
+                            </columns>
+                        </table>
+                    </column>
+                </form>
+            </tab>
+            <tab id="tab2" caption="msg://tab2.caption">
+                <form id="form2">
+                    <column width="350px">
+                        <pickerField id="producerField2" metaClass="myproject_Producer"
+                                     caption="msg://Producer.caption" required="true"/>
+                        <pickerField id="productField" metaClass="myproject_Product"
+                                     caption="msg://Product.caption" required="true">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                        <button id="button2" align="TOP_RIGHT" caption="msg://Button2.caption"/>
+                        <table id="storesWithNoSuchProductTable" dataContainer="storeWithNoSuchProductsDc">
+                            <columns>
+                                <column id="store"/>
+                            </columns>
+                        </table>
+                    </column>
+                </form>
+            </tab>
+        </tabSheet>
+    </layout>
+</window>
