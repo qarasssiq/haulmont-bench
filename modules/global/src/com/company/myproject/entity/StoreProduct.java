@@ -13,6 +13,7 @@ import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
 
 @PublishEntityChangedEvents
@@ -33,6 +34,7 @@ public class StoreProduct extends StandardEntity {
 
     @NotNull
     @Column(name = "AMOUNT", nullable = false)
+    @PositiveOrZero(message = "Amount must be positive or zero!")
     private Integer amount;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

@@ -9,7 +9,6 @@ package com.company.myproject.web.screens.storeservice;
 import com.company.myproject.entity.Retailer;
 import com.company.myproject.entity.Store;
 import com.company.myproject.service.StoreService;
-import com.company.myproject.web.RetailerOption;
 import com.haulmont.cuba.gui.Notifications;
 import com.haulmont.cuba.gui.components.Button;
 import com.haulmont.cuba.gui.components.HasValue;

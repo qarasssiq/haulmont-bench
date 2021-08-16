@@ -10,12 +10,10 @@ import com.company.myproject.entity.Product;
 import com.haulmont.cuba.gui.components.HasValue;
 import com.haulmont.cuba.gui.components.Label;
 import com.haulmont.cuba.gui.components.PickerField;
-import com.haulmont.cuba.gui.components.TextField;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.myproject.entity.StoreProduct;
 
 import javax.inject.Inject;
-import java.math.BigDecimal;
 
 @UiController("myproject_StoreProduct.edit")
 @UiDescriptor("store-product-edit.xml")
