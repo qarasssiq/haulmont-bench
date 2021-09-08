@@ -145,6 +145,7 @@ create table MYPROJECT_PURCHASE_PRODUCT (
     DELETED_BY varchar(50),
     --
     PRODUCT_ID uuid not null,
+    IS_DISCOUNT boolean not null,
     AMOUNT integer not null,
     PURCHASE_ID uuid,
     --

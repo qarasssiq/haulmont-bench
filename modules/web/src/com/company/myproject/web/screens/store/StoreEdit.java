@@ -46,11 +46,11 @@ public class StoreEdit extends StandardEditor<Store> {
 
     @Subscribe
     public void onInit(InitEvent event) {
-        storeProductsTable.setStyleProvider( (storeProduct, property) -> {
-                if (storeProduct.getAmount() < storeProductsConfig.getAmount()) {
-                    return "low-amount";
-                }
-                return null;
+        storeProductsTable.setStyleProvider((storeProduct, property) -> {
+            if (storeProduct.getAmount() < storeProductsConfig.getAmount()) {
+                return "low-amount";
+            }
+            return null;
         });
     }
 }

@@ -1,4 +1,8 @@
 /* Define your theme modifications inside next mixin */
 @mixin com_company_myproject-hover-ext {
 
+.v-table-cell-content.low-amount {
+    background-color: #ffb3b3;
+  }
+
 }
