@@ -1,4 +1,4 @@
-create table MYPROJECT_PRODUCT (
+create table MYPROJECT_STORE (
     ID uuid,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -8,9 +8,14 @@ create table MYPROJECT_PRODUCT (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    PRODUCT_NAME varchar(255) not null,
-    PRODUCT_PRODUCER_ID uuid not null,
-    PRODUCT_PRICE decimal(19, 2) not null,
+    CITY varchar(255),
+    STREET varchar(255),
+    BUILDING varchar(255),
+    --
+    NUMBER varchar(255) not null,
+    NAME varchar(255) not null,
+    RETAILER_ID uuid not null,
+    TYPE varchar(50),
     --
     primary key (ID)
 );

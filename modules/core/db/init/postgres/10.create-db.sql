@@ -20,6 +20,41 @@ create table MYPROJECT_PRODUCER (
     primary key (ID)
 )^
 -- end MYPROJECT_PRODUCER
+-- begin MYPROJECT_PURCHASE
+create table MYPROJECT_PURCHASE (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    STORE_ID uuid not null,
+    --
+    primary key (ID)
+)^
+-- end MYPROJECT_PURCHASE
+-- begin MYPROJECT_STORE_PRODUCT
+create table MYPROJECT_STORE_PRODUCT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PRODUCT_ID uuid not null,
+    PRICE decimal(19, 2) not null,
+    AMOUNT integer not null,
+    STORE_ID uuid not null,
+    --
+    primary key (ID)
+)^
+-- end MYPROJECT_STORE_PRODUCT
 -- begin MYPROJECT_PRODUCT
 create table MYPROJECT_PRODUCT (
     ID uuid,
@@ -38,6 +73,24 @@ create table MYPROJECT_PRODUCT (
     primary key (ID)
 )^
 -- end MYPROJECT_PRODUCT
+-- begin MYPROJECT_PURCHASE_PRODUCT
+create table MYPROJECT_PURCHASE_PRODUCT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    PRODUCT_ID uuid not null,
+    AMOUNT integer not null,
+    PURCHASE_ID uuid,
+    --
+    primary key (ID)
+)^
+-- end MYPROJECT_PURCHASE_PRODUCT
 -- begin MYPROJECT_STORE
 create table MYPROJECT_STORE (
     ID uuid,
@@ -61,43 +114,6 @@ create table MYPROJECT_STORE (
     primary key (ID)
 )^
 -- end MYPROJECT_STORE
--- begin MYPROJECT_RETAILER
-create table MYPROJECT_RETAILER (
-    ID uuid,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    NAME varchar(255) not null,
-    FULL_NAME varchar(255),
-    --
-    primary key (ID)
-)^
--- end MYPROJECT_RETAILER
-
--- begin MYPROJECT_STORE_PRODUCT
-create table MYPROJECT_STORE_PRODUCT (
-    ID uuid,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    PRODUCT_ID uuid not null,
-    PRICE decimal(19, 2) not null,
-    AMOUNT integer not null,
-    STORE_ID uuid not null,
-    --
-    primary key (ID)
-)^
--- end MYPROJECT_STORE_PRODUCT
 -- begin MYPROJECT_PRICE_HISTORY
 create table MYPROJECT_PRICE_HISTORY (
     ID uuid,
@@ -117,8 +133,8 @@ create table MYPROJECT_PRICE_HISTORY (
     primary key (ID)
 )^
 -- end MYPROJECT_PRICE_HISTORY
--- begin MYPROJECT_PURCHASE
-create table MYPROJECT_PURCHASE (
+-- begin MYPROJECT_RETAILER
+create table MYPROJECT_RETAILER (
     ID uuid,
     VERSION integer not null,
     CREATE_TS timestamp,
@@ -128,27 +144,16 @@ create table MYPROJECT_PURCHASE (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    STORE_ID uuid not null,
+    NAME varchar(255) not null,
+    FULL_NAME varchar(255),
     --
     primary key (ID)
 )^
--- end MYPROJECT_PURCHASE
--- begin MYPROJECT_PURCHASE_PRODUCT
-create table MYPROJECT_PURCHASE_PRODUCT (
-    ID uuid,
-    VERSION integer not null,
-    CREATE_TS timestamp,
-    CREATED_BY varchar(50),
-    UPDATE_TS timestamp,
-    UPDATED_BY varchar(50),
-    DELETE_TS timestamp,
-    DELETED_BY varchar(50),
-    --
-    PRODUCT_ID uuid not null,
-    IS_DISCOUNT boolean not null,
-    AMOUNT integer not null,
-    PURCHASE_ID uuid,
-    --
-    primary key (ID)
+-- end MYPROJECT_RETAILER
+-- begin MYPROJECT_STORE_USER_LINK
+create table MYPROJECT_STORE_USER_LINK (
+    STORE_ID uuid,
+    USER_ID uuid,
+    primary key (STORE_ID, USER_ID)
 )^
--- end MYPROJECT_PURCHASE_PRODUCT
+-- end MYPROJECT_STORE_USER_LINK

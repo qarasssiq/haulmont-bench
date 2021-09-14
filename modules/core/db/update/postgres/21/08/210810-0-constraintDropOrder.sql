@@ -1,1 +1,0 @@
-alter table myproject_order_product drop constraint FK_MYPROJECT_ORDER_PRODUCT_ON_ORDER ;

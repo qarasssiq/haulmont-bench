@@ -1,0 +1,2 @@
+alter table MYPROJECT_STORE_USER_LINK add constraint FK_STOUSE_ON_STORE foreign key (STORE_ID) references MYPROJECT_STORE(ID);
+alter table MYPROJECT_STORE_USER_LINK add constraint FK_STOUSE_ON_USER foreign key (USER_ID) references SEC_USER(ID);

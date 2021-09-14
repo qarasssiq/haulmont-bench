@@ -9,13 +9,12 @@ package com.company.myproject.web.screens.purchaseproduct;
 import com.company.myproject.entity.Product;
 import com.company.myproject.entity.StoreProduct;
 import com.company.myproject.web.StoreOption;
-import com.haulmont.cuba.gui.components.HasValue;
-import com.haulmont.cuba.gui.components.Label;
-import com.haulmont.cuba.gui.components.PickerField;
+import com.haulmont.cuba.gui.components.*;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.myproject.entity.PurchaseProduct;
 
 import javax.inject.Inject;
+import java.math.BigDecimal;
 
 @UiController("myproject_PurchaseProduct.edit")
 @UiDescriptor("purchase-product-edit.xml")

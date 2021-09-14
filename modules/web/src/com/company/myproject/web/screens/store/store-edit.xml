@@ -15,6 +15,7 @@
                   view="store-view">
             <loader/>
             <collection id="storeProductDc" property="storeProducts"/>
+            <collection id="usersDc" property="staff"/>
         </instance>
     </data>
     <dialogMode height="600"
@@ -67,6 +68,25 @@
                             <column id="product" caption="Product"/>
                             <column id="price" caption="Price"/>
                             <column id="amount" caption="Amount"/>
+                        </columns>
+                    </table>
+                </groupBox>
+            </tab>
+            <tab id="users_tab" caption="msg://users_tab.caption" spacing="true">
+                <groupBox id="storeUsersBox" caption="msg://storeUsersBox.caption">
+                    <table id="usersTable" dataContainer="usersDc" width="100%" height="200px">
+                        <actions>
+                            <action id="add" type="add"/>
+                            <action id="exclude" type="exclude"/>
+                        </actions>
+                        <buttonsPanel alwaysVisible="true">
+                            <button id="usersTableAddBtn" action="usersTable.add"/>
+                            <button id="usersTableExcludeBtn" action="usersTable.exclude"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="login"/>
+                            <column id="name"/>
+                            <column id="email"/>
                         </columns>
                     </table>
                 </groupBox>

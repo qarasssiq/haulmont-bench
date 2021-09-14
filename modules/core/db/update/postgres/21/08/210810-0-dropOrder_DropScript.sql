@@ -1,1 +1,0 @@
-drop table if exists MYPROJECT_ORDER__U82651 cascade ;

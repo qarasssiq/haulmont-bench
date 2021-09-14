@@ -13,6 +13,7 @@ import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
+import com.haulmont.cuba.security.entity.User;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -27,6 +28,12 @@ public class Store extends StandardEntity {
     @NotNull
     @Column(name = "NUMBER", nullable = false, unique = true)
     private String number;
+
+    @JoinTable(name = "MYPROJECT_STORE_USER_LINK",
+            joinColumns = @JoinColumn(name = "STORE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "USER_ID"))
+    @ManyToMany
+    private List<User> staff;
 
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
@@ -49,6 +56,14 @@ public class Store extends StandardEntity {
 
     @Column(name = "TYPE")
     private String type;
+
+    public List<User> getStaff() {
+        return staff;
+    }
+
+    public void setStaff(List<User> staff) {
+        this.staff = staff;
+    }
 
     public StoreType getType() {
         return type == null ? null : StoreType.fromId(type);

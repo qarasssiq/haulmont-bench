@@ -28,10 +28,6 @@ public class PurchaseProduct extends StandardEntity {
     private Product product;
 
     @NotNull
-    @Column(name = "IS_DISCOUNT", nullable = false)
-    private Boolean isDiscount = false;
-
-    @NotNull
     @Column(name = "AMOUNT", nullable = false)
     @Positive(message = "Amount of the product must be positive!")
     private Integer amount;
@@ -40,14 +36,6 @@ public class PurchaseProduct extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PURCHASE_ID")
     private Purchase purchase;
-
-    public Boolean getIsDiscount() {
-        return isDiscount;
-    }
-
-    public void setIsDiscount(Boolean isDiscount) {
-        this.isDiscount = isDiscount;
-    }
 
     public Purchase getPurchase() {
         return purchase;

@@ -26,7 +26,9 @@
                 <property name="price"/>
             </property>
             <property name="price"/>
-            <property name="amount"/>
+        </property>
+        <property name="staff" view="_minimal">
+            <property name="email"/>
         </property>
     </view>
     <view entity="myproject_Retailer" name="retailer-view" extends="_local"/>

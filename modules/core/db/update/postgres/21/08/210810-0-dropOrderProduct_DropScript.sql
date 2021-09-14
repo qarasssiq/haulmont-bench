@@ -1,1 +1,0 @@
-drop table if exists MYPROJECT_ORDER_PRODUCT__U73505 cascade ;

@@ -1,1 +1,0 @@
-create unique index IDX_MYPROJECT_STORE_UK_NUMBER on MYPROJECT_STORE (NUMBER) where DELETE_TS is null ;
