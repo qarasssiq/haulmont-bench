@@ -6,7 +6,7 @@
   -->
 
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        caption="msg://storeEdit.caption"
+        caption="msg://storeEdit"
         focusComponent="form"
         messagesPack="com.company.myproject.web.screens.store">
     <data>
@@ -22,20 +22,21 @@
                 width="800"/>
     <layout spacing="true">
         <tabSheet>
-            <tab id="tab" caption="Main tab" spacing="true">
+            <tab id="mainTab" caption="msg://mainTab" spacing="true">
                 <form id="form" dataContainer="storeDc">
                     <column width="350px">
-                        <textField id="storeNumField" property="number" caption="Number"/>
-                        <textField id="storeNameField" property="name" caption="Name"/>
-                        <pickerField id="storeRetailerField" property="retailer" caption="Retailer">
+                        <textField id="storeNumField" property="number" caption="msg://Store.number"/>
+                        <textField id="storeNameField" property="name" caption="msg://Store.name"/>
+                        <pickerField id="storeRetailerField" property="retailer" caption="msg://Store.retailer">
                             <actions>
                                 <action id="lookup" type="picker_lookup"/>
                                 <action id="clear" type="picker_clear"/>
                             </actions>
                         </pickerField>
-                        <textField id="storeCityField" property="address.city" caption="City"/>
-                        <textField id="storeStreetField" property="address.street" caption="Street"/>
-                        <textField id="storehouseField" property="address.building" caption="Building"/>
+                        <textField id="storeCityField" property="address.city" caption="msg://Store.address.city"/>
+                        <textField id="storeStreetField" property="address.street" caption="msg://Store.address.street"/>
+                        <textField id="storeHouseField" property="address.building" caption="msg://Store.address.building"/>
+                        <lookupField id="storeTypeField" property="type" caption="msg://Store.type"/>
                     </column>
                 </form>
                 <hbox id="editActions" spacing="true">
@@ -43,8 +44,8 @@
                     <button id="closeBtn" action="windowClose"/>
                 </hbox>
             </tab>
-            <tab id="tab_1" caption="Products" spacing="true">
-                <groupBox id="storeProductsBox" caption="Products">
+            <tab id="productsTab" caption="msg://products" spacing="true">
+                <groupBox id="storeProductsBox" caption="msg://products">
                     <table id="storeProductsTable" dataContainer="storeProductDc" width="100%" height="200px">
                         <actions>
                             <action id="create" type="create">
@@ -65,15 +66,15 @@
                             <button id="storeProductsTableRemoveBtn" action="storeProductsTable.remove"/>
                         </buttonsPanel>
                         <columns>
-                            <column id="product" caption="Product"/>
-                            <column id="price" caption="Price"/>
-                            <column id="amount" caption="Amount"/>
+                            <column id="product" caption="msg://StoreProduct.product"/>
+                            <column id="price" caption="msg://StoreProduct.price"/>
+                            <column id="amount" caption="msg://StoreProduct.amount"/>
                         </columns>
                     </table>
                 </groupBox>
             </tab>
-            <tab id="users_tab" caption="msg://users_tab.caption" spacing="true">
-                <groupBox id="storeUsersBox" caption="msg://storeUsersBox.caption">
+            <tab id="usersTab" caption="msg://users" spacing="true">
+                <groupBox id="storeUsersBox" caption="msg://users">
                     <table id="usersTable" dataContainer="usersDc" width="100%" height="200px">
                         <actions>
                             <action id="add" type="add"/>

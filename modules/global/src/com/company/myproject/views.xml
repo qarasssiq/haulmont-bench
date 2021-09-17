@@ -31,7 +31,14 @@
             <property name="email"/>
         </property>
     </view>
-    <view entity="myproject_Retailer" name="retailer-view" extends="_local"/>
+    <view entity="myproject_Retailer" name="retailer-view" extends="_local">
+        <property name="stores" view="_minimal">
+            <property name="address" view="_minimal"/>
+            <property name="type"/>
+            <property name="retailer" view="_minimal"/>
+            <property name="location"/>
+        </property>
+    </view>
     <view entity="myproject_StoreProduct" name="storeProduct-view" extends="_local">
         <property name="product" view="_minimal">
             <property name="price"/>

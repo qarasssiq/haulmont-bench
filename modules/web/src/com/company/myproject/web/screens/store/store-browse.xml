@@ -6,8 +6,7 @@
   -->
 
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
-        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
-        caption="msg://storeBrowse.caption"
+        caption="msg://storeBrowse"
         focusComponent="storesTable"
         messagesPack="com.company.myproject.web.screens.store">
     <data readOnly="true">
@@ -39,10 +38,11 @@
                 <action id="remove" type="remove"/>
             </actions>
             <columns>
-                <column id="number" caption="Number"/>
-                <column id="name" caption="Name"/>
-                <column id="retailer" caption="Retailer"/>
-                <column id="address" caption="Address"/>
+                <column id="number" caption="msg://Store.number"/>
+                <column id="name" caption="msg://Store.name"/>
+                <column id="retailer" caption="msg://Store.retailer"/>
+                <column id="address" caption="msg://Store.address"/>
+                <column id="type" caption="msg://Store.type"/>
             </columns>
             <rowsCount/>
             <buttonsPanel id="buttonsPanel"

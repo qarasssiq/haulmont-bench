@@ -12,20 +12,24 @@ import com.haulmont.cuba.core.entity.EmbeddableEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotNull;
 
 @MetaClass(name = "myproject_Address")
 @Embeddable
-@NamePattern("%s, %s, %s|city,street,building")
+@NamePattern("%s, %s, %s|street,building,city")
 public class Address extends EmbeddableEntity {
     private static final long serialVersionUID = 1711860107067625010L;
 
-    @Column(name = "CITY")
+    @Column(name = "CITY", nullable = false)
+    @NotNull
     private String city;
 
-    @Column(name = "STREET")
+    @Column(name = "STREET", nullable = false)
+    @NotNull
     private String street;
 
-    @Column(name = "BUILDING")
+    @Column(name = "BUILDING", nullable = false)
+    @NotNull
     private String building;
 
     public String getBuilding() {

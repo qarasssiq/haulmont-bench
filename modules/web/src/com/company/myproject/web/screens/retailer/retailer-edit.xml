@@ -6,6 +6,7 @@
   -->
 
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
         caption="msg://retailerEdit.caption"
         focusComponent="form"
         messagesPack="com.company.myproject.web.screens.retailer">
@@ -14,20 +15,65 @@
                   class="com.company.myproject.entity.Retailer"
                   view="retailer-view">
             <loader/>
+            <collection id="storesDc" property="stores"/>
         </instance>
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="retailerDc">
-            <column width="350px">
-                <textField id="retailerNameField" property="name" caption="Name"/>
-                <textField id="retailerFullNameField" property="fullName" caption="Full name"/>
-            </column>
-        </form>
-        <hbox id="editActions" spacing="true">
-            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
-            <button id="closeBtn" action="windowClose"/>
-        </hbox>
+    <layout spacing="true">
+        <tabSheet>
+            <tab id="mainTab" caption="msg://Main_tab.caption" spacing="true">
+                <form id="form" dataContainer="retailerDc">
+                    <column width="350px">
+                        <textField id="retailerNameField" property="name" caption="Name"/>
+                        <textField id="retailerFullNameField" property="fullName" caption="Full name"/>
+                    </column>
+                </form>
+                <hbox id="editActions" spacing="true">
+                    <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+                    <button id="closeBtn" action="windowClose"/>
+                </hbox>
+            </tab>
+            <tab id="storesTab" caption="msg://stores_tab.caption" spacing="true">
+                <maps:geoMap id="map" width="100%" height="500px" center="50.18636346457166, 53.21611948836577"
+                             zoom="12">
+                    <maps:layers selectedLayer="storeLayer">
+                        <maps:tile id="tiles" tileProvider="maps_OpenStreetMap"/>
+                        <maps:vector id="storeLayer" dataContainer="storesDc">
+                            <maps:cluster disableAtZoom="18"/>
+                        </maps:vector>
+                    </maps:layers>
+                </maps:geoMap>
+                <groupBox id="retailerStoresBox" caption="msg://retailerStoresBox.caption">
+                    <table id="retailerStoresTable" dataContainer="storesDc" width="100%" height="200px">
+                        <actions>
+                            <action id="create" type="create">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="edit" type="edit">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <buttonsPanel alwaysVisible="true">
+                            <button id="retailerStoresTableCreateBtn" action="retailerStoresTable.create"/>
+                            <button id="retailerStoresTableEditBtn" action="retailerStoresTable.edit"/>
+                            <button id="retailerStoresTableRemoveBtn" action="retailerStoresTable.remove"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="number" caption="msg://number.caption"/>
+                            <column id="name" caption="msg://name.caption"/>
+                            <column id="retailer" caption="msg://retailer.caption"/>
+                            <column id="address" caption="msg://address.caption"/>
+                            <column id="type" caption="msg://type.caption"/>
+                        </columns>
+                    </table>
+                </groupBox>
+            </tab>
+        </tabSheet>
     </layout>
 </window>

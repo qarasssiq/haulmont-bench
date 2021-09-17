@@ -6,7 +6,10 @@
 
 package com.company.myproject.entity;
 
+import com.haulmont.addon.maps.gis.Geometry;
+import com.haulmont.addon.maps.gis.converters.wkt.CubaPointWKTConverter;
 import com.haulmont.chile.core.annotations.Composition;
+import com.haulmont.chile.core.annotations.MetaProperty;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
@@ -14,6 +17,7 @@ import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
 import com.haulmont.cuba.security.entity.User;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -28,6 +32,12 @@ public class Store extends StandardEntity {
     @NotNull
     @Column(name = "NUMBER", nullable = false, unique = true)
     private String number;
+
+    @MetaProperty(datatype = "GeoPoint")
+    @Column(name = "LOCATION")
+    @Geometry
+    @Convert(converter = CubaPointWKTConverter.class)
+    private Point location;
 
     @JoinTable(name = "MYPROJECT_STORE_USER_LINK",
             joinColumns = @JoinColumn(name = "STORE_ID"),
@@ -54,8 +64,17 @@ public class Store extends StandardEntity {
     @EmbeddedParameters(nullAllowed = false)
     private Address address;
 
-    @Column(name = "TYPE")
+    @Column(name = "TYPE", nullable = false)
+    @NotNull
     private String type;
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
 
     public List<User> getStaff() {
         return staff;

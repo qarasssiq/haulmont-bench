@@ -9,9 +9,9 @@ create table MYPROJECT_PRODUCER (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    CITY varchar(255),
-    STREET varchar(255),
-    BUILDING varchar(255),
+    CITY varchar(255) not null,
+    STREET varchar(255) not null,
+    BUILDING varchar(255) not null,
     --
     NAME varchar(255) not null,
     FULL_NAME varchar(255),
@@ -102,14 +102,15 @@ create table MYPROJECT_STORE (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    CITY varchar(255),
-    STREET varchar(255),
-    BUILDING varchar(255),
+    CITY varchar(255) not null,
+    STREET varchar(255) not null,
+    BUILDING varchar(255) not null,
     --
     NUMBER varchar(255) not null,
+    LOCATION VARCHAR(100),
     NAME varchar(255) not null,
     RETAILER_ID uuid not null,
-    TYPE varchar(50),
+    TYPE varchar(50) not null,
     --
     primary key (ID)
 )^

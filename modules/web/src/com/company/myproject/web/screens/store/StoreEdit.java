@@ -6,13 +6,20 @@
 
 package com.company.myproject.web.screens.store;
 
+import com.byteowls.jopencage.JOpenCageGeocoder;
+import com.byteowls.jopencage.model.JOpenCageForwardRequest;
+import com.byteowls.jopencage.model.JOpenCageLatLng;
+import com.byteowls.jopencage.model.JOpenCageResponse;
+import com.byteowls.jopencage.model.JOpenCageReverseRequest;
 import com.company.myproject.config.StoreProductsConfig;
 import com.company.myproject.entity.StoreProduct;
+import com.haulmont.addon.maps.gis.utils.GeometryUtils;
 import com.haulmont.cuba.gui.components.Table;
 import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
 import com.haulmont.cuba.gui.model.DataContext;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.myproject.entity.Store;
+import org.locationtech.jts.geom.Point;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -52,5 +59,20 @@ public class StoreEdit extends StandardEditor<Store> {
             }
             return null;
         });
+    }
+
+    @Subscribe
+    public void onBeforeCommitChanges(BeforeCommitChangesEvent event) {
+        JOpenCageGeocoder jOpenCageGeocoder = new JOpenCageGeocoder("07941c06ed07481a8f0a026eef2954a5");
+        String query =  getEditedEntity().getAddress().getBuilding() + ' ' +
+                        getEditedEntity().getAddress().getStreet() + ", " +
+                        getEditedEntity().getAddress().getCity() + ", RU";
+        JOpenCageForwardRequest request = new JOpenCageForwardRequest(query);
+        request.setRestrictToCountryCode("ru");
+
+        JOpenCageResponse response = jOpenCageGeocoder.forward(request);
+        JOpenCageLatLng firstResultLatLng = response.getFirstPosition();
+        Point newPoint = GeometryUtils.createPoint(firstResultLatLng.getLng(), firstResultLatLng.getLat());
+        getEditedEntity().setLocation(newPoint);
     }
 }

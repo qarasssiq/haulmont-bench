@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
-               dependsOn="com.haulmont.cuba">
+               dependsOn="com.haulmont.addon.maps, com.haulmont.cuba">
 
     <module name="global" blocks="*">
         <artifact name="mypr-global" appJar="true"/>
@@ -20,6 +20,8 @@
         <artifact name="mypr-web" appJar="true"/>
         <artifact name="mypr-web" classifier="web" ext="zip" configuration="webcontent"/>
         <artifact name="mypr-web" ext="jar" configuration="themes" classifier="themes"/>
+        <artifact name="mypr-web-toolkit" classifier="web" ext="zip" configuration="webcontent"
+                  skipIfExists="web-toolkit"/>
 
         <property name="cuba.springContextConfig" value="+com/company/myproject/web-spring.xml"/>
         <property name="cuba.dispatcherSpringContextConfig" value="+com/company/myproject/web-dispatcher-spring.xml"/>
@@ -27,5 +29,9 @@
         <property name="cuba.menuConfig" value="+com/company/myproject/web-menu.xml"/>
         <property name="cuba.permissionConfig" value="+com/company/myproject/web-permissions.xml"/>
         <property name="cuba.mainMessagePack" value="+com.company.myproject.web"/>
+        <property name="cuba.web.widgetSet" value="com.company.myproject.web.toolkit.ui.AppWidgetSet"/>
+    </module>
+    <module name="web-toolkit" dependsOn="web">
+        <artifact name="mypr-web-toolkit"/>
     </module>
 </app-component>
