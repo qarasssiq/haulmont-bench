@@ -48,6 +48,7 @@
                         <column id="name" caption="Name"/>
                         <column id="fullName" caption="Full name"/>
                         <column id="user" caption="User"/>
+                        <column id="address" caption="msg://Producer.address"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -74,6 +75,9 @@
                                     <action id="clear" type="picker_clear"/>
                                 </actions>
                             </pickerField>
+                            <textField id="producerCityField" property="address.city" caption="msg://Producer.address.city"/>
+                            <textField id="producerStreetField" property="address.street" caption="msg://Producer.address.street"/>
+                            <textField id="producerHouseField" property="address.building" caption="msg://Producer.address.building"/>
                         </column>
                     </form>
                 </scrollBox>

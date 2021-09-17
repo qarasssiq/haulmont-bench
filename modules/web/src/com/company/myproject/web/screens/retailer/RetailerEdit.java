@@ -22,6 +22,7 @@ import com.haulmont.addon.maps.web.gui.components.layer.style.GeometryStyle;
 import com.haulmont.addon.maps.web.gui.components.layer.style.PointStyle;
 import com.haulmont.cuba.core.global.DataManager;
 import com.haulmont.cuba.gui.icons.CubaIcon;
+import com.haulmont.cuba.gui.model.CollectionContainer;
 import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
 import com.haulmont.cuba.gui.model.DataContext;
 import com.haulmont.cuba.gui.screen.*;
@@ -29,6 +30,7 @@ import com.company.myproject.entity.Retailer;
 import org.locationtech.jts.geom.Point;
 
 import javax.inject.Inject;
+import java.util.Objects;
 
 @UiController("myproject_Retailer.edit")
 @UiDescriptor("retailer-edit.xml")
@@ -41,6 +43,8 @@ public class RetailerEdit extends StandardEditor<Retailer> {
     private CollectionPropertyContainer<Store> storesDc;
     @Inject
     private DataContext dataContext;
+    @Inject
+    private GeoMap map;
 
     @Install(to = "retailerStoresTable.create", subject = "screenConfigurer")
     protected void retailerStoresTableCreateScreenConfigurer(Screen editorScreen) {
@@ -64,6 +68,18 @@ public class RetailerEdit extends StandardEditor<Retailer> {
     private String storeLayerTooltipContentProvider(Store store) {
         return store.getName() + ", " + store.getAddress().getInstanceName();
     }
+
+    @Subscribe(id = "storesDc", target = Target.DATA_CONTAINER)
+    public void onStoresDcCollectionChange(CollectionContainer.CollectionChangeEvent<Store> event) {
+        Objects.requireNonNull(map.getSelectedLayer()).refresh();
+    }
+
+    @Install(to = "retailerStoresTable.create", subject = "afterCommitHandler")
+    private void retailerStoresTableCreateAfterCommitHandler(Store store) {
+        Objects.requireNonNull(map.getSelectedLayer()).refresh();
+    }
+
+
 
     /*@Subscribe("map.storeLayer")
     private void GeoObjectSelectedEvent(VectorLayer.GeoObjectSelectedEvent<Store> event) {

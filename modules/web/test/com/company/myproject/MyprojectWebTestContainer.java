@@ -10,7 +10,8 @@ public class MyprojectWebTestContainer extends TestContainer {
     public MyprojectWebTestContainer() {
         appComponents = Arrays.asList(
                 "com.haulmont.cuba",
-                "com.haulmont.addon.maps");
+                "com.haulmont.addon.maps",
+                "com.haulmont.charts");
         appPropertiesFiles = Arrays.asList(
                 // List the files defined in your web.xml
                 // in appPropertiesConfig context parameter of the web module

@@ -9,6 +9,7 @@
 
     <view entity="myproject_Producer" name="producer-view" extends="_local">
         <property name="user" view="_minimal"/>
+        <property name="address" view="_minimal"/>
     </view>
     <view entity="myproject_Product" name="product-view" extends="_local">
         <property name="producer" view="_minimal">
@@ -37,6 +38,7 @@
             <property name="type"/>
             <property name="retailer" view="_minimal"/>
             <property name="location"/>
+            <property name="storeProducts" view="_minimal"/>
         </property>
     </view>
     <view entity="myproject_StoreProduct" name="storeProduct-view" extends="_local">
