@@ -7,8 +7,6 @@
 package com.company.myproject.entity;
 
 import com.haulmont.cuba.core.entity.StandardEntity;
-import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
-import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,16 +19,8 @@ public class PriceHistory extends StandardEntity {
     private static final long serialVersionUID = 779593230315877223L;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "PRODUCT_ID")
-    @OnDeleteInverse(DeletePolicy.CASCADE)
-    @NotNull
-    private Product product;
-
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "STORE_ID")
-    @OnDeleteInverse(DeletePolicy.CASCADE)
-    private Store store;
+    @JoinColumn(name = "STORE_PRODUCT_ID")
+    private StoreProduct storeProduct;
 
     @NotNull
     @Column(name = "PRICE", nullable = false)
@@ -40,6 +30,14 @@ public class PriceHistory extends StandardEntity {
     @NotNull
     private LocalDate date;
 
+    public StoreProduct getStoreProduct() {
+        return storeProduct;
+    }
+
+    public void setStoreProduct(StoreProduct storeProduct) {
+        this.storeProduct = storeProduct;
+    }
+
     public void setDate(LocalDate date) {
         this.date = date;
     }
@@ -48,28 +46,12 @@ public class PriceHistory extends StandardEntity {
         return date;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
     public BigDecimal getPrice() {
         return price;
     }
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    public Store getStore() {
-        return store;
-    }
-
-    public void setStore(Store store) {
-        this.store = store;
     }
 
 }

@@ -34,8 +34,10 @@
                             </actions>
                         </pickerField>
                         <textField id="storeCityField" property="address.city" caption="msg://Store.address.city"/>
-                        <textField id="storeStreetField" property="address.street" caption="msg://Store.address.street"/>
-                        <textField id="storeHouseField" property="address.building" caption="msg://Store.address.building"/>
+                        <textField id="storeStreetField" property="address.street"
+                                   caption="msg://Store.address.street"/>
+                        <textField id="storeHouseField" property="address.building"
+                                   caption="msg://Store.address.building"/>
                         <lookupField id="storeTypeField" property="type" caption="msg://Store.type"/>
                     </column>
                 </form>

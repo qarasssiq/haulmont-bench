@@ -6,8 +6,10 @@
 
 package com.company.myproject.entity;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.entity.annotation.PublishEntityChangedEvents;
 import com.haulmont.cuba.core.global.DeletePolicy;
@@ -16,6 +18,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PositiveOrZero;
 import java.math.BigDecimal;
+import java.util.List;
 
 @PublishEntityChangedEvents
 @Table(name = "MYPROJECT_STORE_PRODUCT")
@@ -43,6 +46,19 @@ public class StoreProduct extends StandardEntity {
     @JoinColumn(name = "STORE_ID")
     @OnDeleteInverse(DeletePolicy.CASCADE)
     private Store store;
+
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "storeProduct")
+    private List<PriceHistory> priceHistory;
+
+    public List<PriceHistory> getPriceHistory() {
+        return priceHistory;
+    }
+
+    public void setPriceHistory(List<PriceHistory> priceHistory) {
+        this.priceHistory = priceHistory;
+    }
 
     public Store getStore() {
         return store;

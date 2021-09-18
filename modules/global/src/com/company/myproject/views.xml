@@ -21,16 +21,13 @@
         </property>
         <property name="address" view="_minimal">
         </property>
-        <property name="storeProducts" view="_minimal">
-            <property name="product" view="_minimal">
-                <property name="producer" view="_minimal"/>
-                <property name="price"/>
-            </property>
-            <property name="price"/>
+        <property name="storeProducts" view="_local">
+            <property name="product" view="_minimal"/>
         </property>
         <property name="staff" view="_minimal">
             <property name="email"/>
         </property>
+        <property name="totalProductsQuantity"/>
     </view>
     <view entity="myproject_Retailer" name="retailer-view" extends="_local">
         <property name="stores" view="_minimal">
@@ -42,8 +39,15 @@
         </property>
     </view>
     <view entity="myproject_StoreProduct" name="storeProduct-view" extends="_local">
+        <property name="priceHistory" view="_minimal">
+            <property name="price"/>
+            <property name="date"/>
+        </property>
         <property name="product" view="_minimal">
             <property name="price"/>
+        </property>
+        <property name="store" view="_minimal">
+            <property name="storeProducts" view="_minimal"/>
         </property>
     </view>
     <view entity="myproject_Purchase" name="purchase-view" extends="_local">

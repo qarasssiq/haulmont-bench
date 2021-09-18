@@ -6,6 +6,7 @@
   -->
 
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd"
         caption="msg://storeProductEdit.caption"
         focusComponent="form"
         messagesPack="com.company.myproject.web.screens.storeproduct">
@@ -14,24 +15,95 @@
                   class="com.company.myproject.entity.StoreProduct"
                   view="storeProduct-view">
             <loader/>
+            <collection id="priceHistoryDc" property="priceHistory"/>
         </instance>
     </data>
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="storeProductDc">
-            <column width="350px">
-                <pickerField id="productField" property="product" caption="Product">
-                    <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
-                    </actions>
-                </pickerField>
-                <textField id="priceField" property="price" caption="Price"/>
-                <label id="producerPriceLabel" value="Producer's price: "/>
-                <textField id="amountField" property="amount" caption="Amount"/>
-            </column>
-        </form>
+        <tabSheet>
+            <tab id="mainTab" caption="msg://mainTab" spacing="true">
+                <form id="form" dataContainer="storeProductDc">
+                    <column width="350px">
+                        <pickerField id="productField" property="product" caption="Product">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                        <textField id="priceField" property="price" caption="Price"/>
+                        <label id="producerPriceLabel" value="Producer's price: "/>
+                        <textField id="amountField" property="amount" caption="Amount"/>
+                    </column>
+                </form>
+            </tab>
+            <tab id="priceHistoryTab" caption="msg://priceHistoryTab" spacing="true">
+                <chart:serialChart id="lineChart"
+                                   autoMarginOffset="20"
+                                   categoryField="date"
+                                   dataContainer="priceHistoryDc"
+                                   height="500px"
+                                   marginRight="40"
+                                   marginLeft="40"
+                                   mouseWheelZoomEnabled="true"
+                                   theme="LIGHT"
+                                   width="100%">
+                    <chart:valueAxes>
+                        <chart:axis id="v1"
+                                    axisAlpha="0"
+                                    ignoreAxisWidth="true"
+                                    position="LEFT"/>
+                    </chart:valueAxes>
+                    <chart:balloon borderThickness="1"
+                                   shadowAlpha="0"/>
+                    <chart:graphs>
+                        <chart:graph id="g1"
+                                     bullet="ROUND"
+                                     bulletBorderAlpha="1"
+                                     bulletColor="WHITE"
+                                     bulletSize="5"
+                                     hideBulletsCount="50"
+                                     lineThickness="2"
+                                     title="Red line"
+                                     useLineColorForBulletBorder="true"
+                                     valueField="price"
+                                     balloonText="&lt;span style='font-size:18px;'&gt;[[value]]&lt;/span&gt;">
+                            <chart:balloon adjustBorderColor="false"
+                                           color="WHITE"
+                                           drop="true"/>
+                        </chart:graph>
+                    </chart:graphs>
+                    <chart:categoryAxis dashLength="1"
+                                        minorGridEnabled="true"/>
+                    <chart:chartScrollbar autoGridCount="true"
+                                          backgroundAlpha="0"
+                                          color="#AAAAAA"
+                                          graph="g1"
+                                          graphFillAlpha="0"
+                                          graphLineAlpha="0.5"
+                                          offset="30"
+                                          oppositeAxis="false"
+                                          scrollbarHeight="80"
+                                          selectedBackgroundAlpha="0.1"
+                                          selectedBackgroundColor="#888888"
+                                          selectedGraphFillAlpha="0"
+                                          selectedGraphLineAlpha="1"/>
+                    <chart:chartCursor cursorAlpha="1"
+                                       cursorColor="#258cbb"
+                                       cursorPosition="MOUSE"
+                                       limitToGraph="g1"
+                                       pan="true"
+                                       valueLineAlpha="0.2"
+                                       valueLineEnabled="true"
+                                       valueLineBalloonEnabled="true"
+                                       valueZoomable="true"/>
+                    <chart:valueScrollbar offset="50"
+                                          oppositeAxis="false"
+                                          scrollbarHeight="10"/>
+                    <chart:export/>
+                </chart:serialChart>
+            </tab>
+        </tabSheet>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>

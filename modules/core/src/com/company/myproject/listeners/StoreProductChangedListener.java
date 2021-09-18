@@ -29,11 +29,10 @@ public class StoreProductChangedListener {
     @TransactionalEventListener(phase = TransactionPhase.AFTER_COMMIT)
     public void afterCommit(EntityChangedEvent<StoreProduct, UUID> event) {
         StoreProduct storeProduct = dataManager.load(event.getEntityId()).view("storeProduct-view").one();
-        if ((event.getChanges().isChanged("price")) &&
-                (event.getType() != EntityChangedEvent.Type.DELETED)) {
+        if (((event.getChanges().isChanged("price")) &&
+                (event.getType() != EntityChangedEvent.Type.DELETED)) || event.getType() == EntityChangedEvent.Type.CREATED) {
             PriceHistory priceHistory = dataManager.create(PriceHistory.class);
-            priceHistory.setProduct(storeProduct.getProduct());
-            priceHistory.setStore(storeProduct.getStore());
+            priceHistory.setStoreProduct(storeProduct);
             priceHistory.setPrice(storeProduct.getPrice());
             priceHistory.setDate(LocalDate.now());
 
