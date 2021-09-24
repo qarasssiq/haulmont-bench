@@ -51,7 +51,9 @@
         </property>
     </view>
     <view entity="myproject_Purchase" name="purchase-view" extends="_local">
-        <property name="store" view="_minimal"/>
+        <property name="store" view="_minimal">
+            <property name="storeProducts" view="_minimal"/>
+        </property>
         <property name="purchaseProducts" view="_minimal"/>
     </view>
     <view entity="myproject_PurchaseProduct" name="purchaseProduct-view" extends="_local">

@@ -33,8 +33,7 @@ public class Store extends StandardEntity {
     @Column(name = "NUMBER", nullable = false, unique = true)
     private String number;
 
-    @Transient
-    @MetaProperty
+    @Column
     private Integer totalProductsQuantity;
 
     @MetaProperty(datatype = "GeoPoint")
@@ -71,18 +70,6 @@ public class Store extends StandardEntity {
     @Column(name = "TYPE", nullable = false)
     @NotNull
     private String type;
-
-    @Transient
-    @MetaProperty(related = {"storeProducts"})
-    public Integer getTotalProductsQuantity() {
-        Integer totalProductsQuantity = 0;
-        if(storeProducts != null) {
-            for (StoreProduct storeProduct : storeProducts) {
-                totalProductsQuantity += storeProduct.getAmount();
-            }
-        }
-        return totalProductsQuantity;
-    }
 
     public Point getLocation() {
         return location;

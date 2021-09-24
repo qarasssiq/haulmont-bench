@@ -19,6 +19,7 @@ import com.haulmont.cuba.gui.model.CollectionPropertyContainer;
 import com.haulmont.cuba.gui.model.DataContext;
 import com.haulmont.cuba.gui.screen.*;
 import com.company.myproject.entity.Store;
+import com.haulmont.reports.gui.ReportGuiManager;
 import org.locationtech.jts.geom.Point;
 
 import javax.inject.Inject;
@@ -37,6 +38,8 @@ public class StoreEdit extends StandardEditor<Store> {
     private Table<StoreProduct> storeProductsTable;
     @Inject
     private StoreProductsConfig storeProductsConfig;
+    @Inject
+    private ReportGuiManager reportGuiManager;
 
     @Install(to = "storeProductsTable.create", subject = "afterCommitHandler")
     private void storeProductsTableCreateAfterCommitHandler(StoreProduct addedProduct) {
