@@ -8,9 +8,9 @@ create table MYPROJECT_PRODUCER (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    CITY varchar(255),
-    STREET varchar(255),
-    BUILDING varchar(255),
+    CITY varchar(255) not null,
+    STREET varchar(255) not null,
+    BUILDING varchar(255) not null,
     --
     NAME varchar(255) not null,
     FULL_NAME varchar(255),

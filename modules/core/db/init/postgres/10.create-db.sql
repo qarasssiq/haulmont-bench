@@ -107,7 +107,7 @@ create table MYPROJECT_STORE (
     BUILDING varchar(255) not null,
     --
     NUMBER varchar(255) not null,
-    TOTALPRODUCTSQUANTITY integer,
+    TOTAL_PRODUCTS_QUANTITY integer,
     LOCATION VARCHAR(100),
     NAME varchar(255) not null,
     RETAILER_ID uuid not null,

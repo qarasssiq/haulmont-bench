@@ -33,7 +33,7 @@ public class Store extends StandardEntity {
     @Column(name = "NUMBER", nullable = false, unique = true)
     private String number;
 
-    @Column
+    @Column(name = "TOTAL_PRODUCTS_QUANTITY")
     private Integer totalProductsQuantity;
 
     @MetaProperty(datatype = "GeoPoint")
@@ -70,6 +70,20 @@ public class Store extends StandardEntity {
     @Column(name = "TYPE", nullable = false)
     @NotNull
     private String type;
+
+    public Integer getTotalProductsQuantity() {
+        Integer result = 0;
+        if (storeProducts != null) {
+            for (StoreProduct storeProduct : storeProducts) {
+                result += storeProduct.getAmount();
+            }
+        }
+        return result;
+    }
+
+    public void setTotalProductsQuantity(Integer totalProductsQuantity) {
+        this.totalProductsQuantity = totalProductsQuantity;
+    }
 
     public Point getLocation() {
         return location;

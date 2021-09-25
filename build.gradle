@@ -150,6 +150,7 @@ configure(webModule) {
         }
     }
 
+
     task webArchive(type: Zip) {
         from file("$buildDir/web")
         from file('web')
@@ -227,6 +228,7 @@ configure(webToolkitModule) {
         into "$cuba.tomcat.dir/webapps/${modulePrefix}/WEB-INF/lib"
     }
 }
+
 
 task undeploy(type: Delete, dependsOn: ":${modulePrefix}-web:cleanConf") {
     delete("$cuba.tomcat.dir/shared")

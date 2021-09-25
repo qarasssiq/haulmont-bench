@@ -13,7 +13,7 @@
             <map>
                 <entry key="myproject_ProducerService" value="com.company.myproject.service.ProducerService"/>
                 <entry key="myproject_StoreService" value="com.company.myproject.service.StoreService"/>
-                <entry key="myproject_MailSendService" value="com.company.myproject.service.MailSendService"/>
+                <entry key="myproject_EmailSendService" value="com.company.myproject.service.EmailSendService"/>
             </map>
         </property>
     </bean>

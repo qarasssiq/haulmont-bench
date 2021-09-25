@@ -8,8 +8,7 @@ create table MYPROJECT_PRICE_HISTORY (
     DELETE_TS timestamp,
     DELETED_BY varchar(50),
     --
-    PRODUCT_ID uuid not null,
-    STORE_ID uuid not null,
+    STORE_PRODUCT_ID uuid not null,
     PRICE decimal(19, 2) not null,
     DATE date not null,
     --

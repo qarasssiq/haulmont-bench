@@ -27,7 +27,6 @@
         <property name="staff" view="_minimal">
             <property name="email"/>
         </property>
-        <property name="totalProductsQuantity"/>
     </view>
     <view entity="myproject_Retailer" name="retailer-view" extends="_local">
         <property name="stores" view="_minimal">
